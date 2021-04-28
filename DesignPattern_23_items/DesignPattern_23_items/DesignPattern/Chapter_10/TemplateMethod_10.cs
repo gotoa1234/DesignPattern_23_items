@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_10
 {
-    class TemplateMethod_10
+    /// <summary>
+    /// 【模板模式】Template Method 行為型模式
+    /// <para>
+    /// 定義一個操作中的算法骨架(基底)，而將一些步驟延遲到子類中實例。
+    /// 模板方法可以不改變一個算法的結構即可重定義該算法的某些特定步驟。
+    /// </para>
+    /// </summary>
+    internal class TemplateMethod_10
     {
         public void TemplateMethodExecute()
         {
@@ -17,13 +20,13 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_10
 
             c = new ConcreteClassB();
             c.TemplateMethod();
-
         }
     }
 
-    abstract class AbstactClass
+    internal abstract class AbstactClass
     {
         public abstract void PrimitiveOperation1();
+
         public abstract void PrimitiveOperation2();
 
         public void TemplateMethod()
@@ -32,10 +35,9 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_10
             PrimitiveOperation2();
             Console.WriteLine("");
         }
-
     }
 
-    class ConcreteClassA : AbstactClass
+    internal class ConcreteClassA : AbstactClass
     {
         public override void PrimitiveOperation1()
         {
@@ -48,7 +50,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_10
         }
     }
 
-    class ConcreteClassB : AbstactClass
+    internal class ConcreteClassB : AbstactClass
     {
         public override void PrimitiveOperation1()
         {

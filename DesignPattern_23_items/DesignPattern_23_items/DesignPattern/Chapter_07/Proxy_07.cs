@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_07
 {
-    class Proxy_07
+    /// <summary>
+    /// 【代理模式】Proxy 結構型模式
+    /// <para>
+    /// 為其它對象提供一種代理，以控制自己對這個其他對象的訪問
+    /// </para>
+    /// </summary>
+    internal class Proxy_07
     {
         public void ProxyModeExecute()
         {
@@ -18,11 +20,10 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_07
             dd.GiveFlowers();
             dd.GiveChocalate();
             dd.GiveDolls();
-
         }
     }
 
-    interface IGiveGift
+    internal interface IGiveGift
     {
         void GiveDolls();
 
@@ -31,7 +32,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_07
         void GiveFlowers();
     }
 
-    class Pursuit : IGiveGift
+    internal class Pursuit : IGiveGift
     {
         protected SchoolGirl _mm;
 
@@ -39,7 +40,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_07
         {
             _mm = mm;
         }
-
 
         public void GiveChocalate()
         {
@@ -57,7 +57,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_07
         }
     }
 
-    class SchoolGirl
+    internal class SchoolGirl
     {
         private string _name;
 
@@ -68,7 +68,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_07
         }
     }
 
-    class Proxy : IGiveGift
+    internal class Proxy : IGiveGift
     {
         protected Pursuit Pursuit;
 
@@ -92,5 +92,4 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_07
             Pursuit.GiveFlowers();
         }
     }
-
 }

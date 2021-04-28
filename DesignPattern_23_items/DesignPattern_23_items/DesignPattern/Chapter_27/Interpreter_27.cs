@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_27
 {
     /// <summary>
-    /// 解釋器 Interpreter
+    /// 【解釋器模式】Interperter  行為型模式
+    /// <para>
+    /// 給定一個語言，定義它的文法的一種表示，
+    /// 並定義一個解釋器，這個解釋器使用該表示來解釋語言中的句子
+    /// </para>
     /// </summary>
-    class Interpreter_27
+    internal class Interpreter_27
     {
         /// <summary>
         /// 解釋器原型
@@ -72,19 +73,16 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_27
             {
                 Console.WriteLine(e);
             }
-
-
-
         }
 
         #region 解釋器原型
 
-        abstract class AbstractExpression
+        private abstract class AbstractExpression
         {
             public abstract void Interpreter(Context context);
         }
 
-        class TerminalExpression : AbstractExpression
+        private class TerminalExpression : AbstractExpression
         {
             public override void Interpreter(Context context)
             {
@@ -92,7 +90,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_27
             }
         }
 
-        class NonterminalExpression : AbstractExpression
+        private class NonterminalExpression : AbstractExpression
         {
             public override void Interpreter(Context context)
             {
@@ -100,7 +98,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_27
             }
         }
 
-        class Context
+        private class Context
         {
             private string _input;
 
@@ -111,6 +109,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_27
             }
 
             private string _output;
+
             public string Output
             {
                 get => _output;
@@ -118,17 +117,14 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_27
             }
         }
 
-
-
-
-        #endregion
+        #endregion 解釋器原型
 
         #region 音樂解釋器
 
         /// <summary>
         /// 演奏內容
         /// </summary>
-        class PlayContext
+        private class PlayContext
         {
             /// <summary>
             /// 文本
@@ -145,7 +141,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_27
         /// <summary>
         /// 抽象表達式
         /// </summary>
-        abstract class Expression
+        private abstract class Expression
         {
             /// <summary>
             /// 解釋器
@@ -177,13 +173,12 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_27
             /// <param name="key"></param>
             /// <param name="value"></param>
             public abstract void Excute(string key, double value);
-
         }
 
         /// <summary>
         /// 音符對應類
         /// </summary>
-        class Note : Expression
+        private class Note : Expression
         {
             public override void Excute(string key, double value)
             {
@@ -193,21 +188,27 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_27
                     case "C":
                         note = "1";
                         break;
+
                     case "D":
                         note = "2";
                         break;
+
                     case "E":
                         note = "3";
                         break;
+
                     case "F":
                         note = "4";
                         break;
+
                     case "G":
                         note = "5";
                         break;
+
                     case "A":
                         note = "6";
                         break;
+
                     case "B":
                         note = "7";
                         break;
@@ -216,7 +217,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_27
             }
         }
 
-        class Scale : Expression
+        private class Scale : Expression
         {
             public override void Excute(string key, double value)
             {
@@ -226,9 +227,11 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_27
                     case 1:
                         scale = "低音";
                         break;
+
                     case 2:
                         scale = "中音";
                         break;
+
                     case 3:
                         scale = "高音";
                         break;
@@ -237,6 +240,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_27
             }
         }
 
-        #endregion
+        #endregion 音樂解釋器
     }
 }

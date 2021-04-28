@@ -4,11 +4,14 @@ using System.Linq;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_26
 {
+    /// <summary>
+    /// 【享元模式】Fly Weight 結構型模式
+    /// <para>
+    /// 運用共享技術有效地支持大量細粒度的對象。
+    /// </para>
+    /// </summary>
     class FlyWeight_26
     {
-        /// <summary>
-        /// 享元模式原型
-        /// </summary>
         public void ExcuteOriFlyWeight()
         {
             int extrinsicstate = 22;

@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_12
 {
-    class Facade_12
+    /// <summary>
+    /// 【外觀模式】Facade 結構型模式
+    /// <para>
+    /// 為子系統中的一組接口提供一個一致的操作界面，
+    /// 此模式定義了一個高階接口，這個接口使得這一子系統更加容易使用。
+    /// </para>
+    /// </summary>
+    internal class Facade_12
     {
         public void FacadeExecute()
         {
@@ -14,19 +17,18 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_12
 
             fc.CombinateA();
             fc.CombinateB();
-
         }
     }
-    class SubSystemOne
+
+    internal class SubSystemOne
     {
         public void MethondOne()
         {
             Console.WriteLine("子系統方法一");
         }
-
     }
 
-    class SubSystemTwo
+    internal class SubSystemTwo
     {
         public void MethodTwo()
         {
@@ -34,7 +36,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_12
         }
     }
 
-    class SubSystemThree
+    internal class SubSystemThree
     {
         public void MethodThree()
         {
@@ -42,7 +44,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_12
         }
     }
 
-    class SubSystemFour
+    internal class SubSystemFour
     {
         public void MethodFour()
         {
@@ -50,7 +52,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_12
         }
     }
 
-    class Facade
+    internal class Facade
     {
         private SubSystemOne _one;
         private SubSystemTwo _two;
@@ -63,7 +65,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_12
             _two = new SubSystemTwo();
             _three = new SubSystemThree();
             _four = new SubSystemFour();
-
         }
 
         public void CombinateA()
@@ -76,8 +77,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_12
         {
             _two.MethodTwo();
             _four.MethodFour();
-
         }
     }
-
 }

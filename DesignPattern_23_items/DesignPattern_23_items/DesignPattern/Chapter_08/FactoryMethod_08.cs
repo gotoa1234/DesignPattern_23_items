@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_08
 {
-    class FactoryMethod_08
+    /// <summary>
+    /// 【工廠方法模式】Factory 創建型模式
+    /// <para>
+    /// 定義一個用於創建對象的接口，讓子類決定實例化哪一個類。
+    /// 工廠方法使一個類的實例化延遲到子類中實例
+    /// </para>
+    /// </summary>
+    internal class FactoryMethod_08
     {
         public FactoryMethod_08()
         {
@@ -16,11 +19,10 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_08
             stu.BuyRice();
             stu.Wash();
             stu.Sweep();
-
         }
     }
 
-    class LeiFeng
+    internal class LeiFeng
     {
         public void Sweep()
         {
@@ -38,11 +40,11 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_08
         }
     }
 
-    class Undergraduate : LeiFeng
+    internal class Undergraduate : LeiFeng
     {
     }
 
-    class UndergraduateFactory : IFactory
+    internal class UndergraduateFactory : IFactory
     {
         public LeiFeng CreateLeiFeng()
         {
@@ -50,7 +52,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_08
         }
     }
 
-    class Volunteer : LeiFeng
+    internal class Volunteer : LeiFeng
     {
         public LeiFeng CreateLeiFeng()
         {
@@ -58,7 +60,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_08
         }
     }
 
-    class VolunteerFactory : IFactory
+    internal class VolunteerFactory : IFactory
     {
         public LeiFeng CreateLeiFeng()
         {
@@ -66,12 +68,12 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_08
         }
     }
 
-    interface IFactory
+    internal interface IFactory
     {
         LeiFeng CreateLeiFeng();
     }
 
-    class SimpleFactory
+    internal class SimpleFactory
     {
         public static LeiFeng CreateLeiFang(string type)
         {
@@ -81,14 +83,13 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_08
                 case "a":
                     result = new Undergraduate();
                     break;
+
                 case "b":
                     result = new Volunteer();
                     break;
             }
 
             return result;
-
         }
-
     }
 }

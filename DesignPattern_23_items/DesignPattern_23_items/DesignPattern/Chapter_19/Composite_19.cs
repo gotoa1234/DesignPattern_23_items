@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_19
 {
-    class Composite_19
+    /// <summary>
+    /// 【組合模式】Composite 結構型模式
+    /// <para>
+    /// 將對象組合成樹形結構以表示'部分-整體'的層次結構。
+    /// 組合模式使得用戶對單個對象和組合對象的使用有一致性。
+    /// </para>
+    /// </summary>
+    internal class Composite_19
     {
         public void BaseExcute()
         {
@@ -32,13 +36,10 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_19
             root.Remove(leaf);
 
             root.Display(1);
-
-
-
         }
     }
 
-    abstract class Component
+    internal abstract class Component
     {
         protected string name;
 
@@ -54,9 +55,11 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_19
         public abstract void Display(int depth);
     }
 
-    class Leaf : Component
+    internal class Leaf : Component
     {
-        public Leaf(string name) : base(name) { }
+        public Leaf(string name) : base(name)
+        {
+        }
 
         public override void Add(Component c)
         {
@@ -72,11 +75,9 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_19
         {
             Console.WriteLine("Cannot remove from a leaf.");
         }
-
-
     }
 
-    class Composite : Component
+    internal class Composite : Component
     {
         private List<Component> children = new List<Component>();
 
@@ -95,7 +96,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_19
             foreach (var item in children)
             {
                 item.Display(depth + 2);
-
             }
         }
 

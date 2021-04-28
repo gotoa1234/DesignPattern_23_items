@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_14
 {
-    class Observer_14
+    /// <summary>
+    /// 【觀察者模式】Observer 行為型模式
+    /// <para>
+    /// 定義了一種一對多的依賴關係，讓多個觀察者對象同時監聽某一個主題對象。
+    /// 這個主題對象在狀態發生變化時，會通知所有觀察者對象，
+    /// 使它們能夠自動更新自己
+    /// </para>
+    /// </summary>
+    internal class Observer_14
     {
         public void ExecuteObserverStandard()
         {
@@ -18,17 +23,15 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_14
 
             s.SubjectState = "ABC";
             s.Notify();
-
-
         }
     }
 
-    #region Observer Origine 
+    #region Observer Origine
 
     /// <summary>
     /// Register
     /// </summary>
-    class StockObserver
+    internal class StockObserver
     {
         private string _name;
         private Secretary _sub;
@@ -48,7 +51,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_14
     /// <summary>
     /// Publisher
     /// </summary>
-    class Secretary
+    internal class Secretary
     {
         private IList<StockObserver> observers = new List<StockObserver>();
         private string _action;
@@ -69,7 +72,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_14
         {
             foreach (StockObserver o in observers)
                 o.Update();
-
         }
 
         public string SecretaryAction
@@ -79,18 +81,16 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_14
         }
     }
 
-    #endregion
+    #endregion Observer Origine
 
     #region Observer Standard
 
-
-
-    abstract class Observer
+    internal abstract class Observer
     {
         public abstract void Update();
     }
 
-    abstract class Subject
+    internal abstract class Subject
     {
         private IList<Observer> observers = new List<Observer>();
 
@@ -121,11 +121,10 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_14
             {
                 item.Update();
             }
-
         }
     }
 
-    class ConcreteSubject : Subject
+    internal class ConcreteSubject : Subject
     {
         private string _subjectState;
 
@@ -136,7 +135,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_14
         }
     }
 
-    class ConcreteObserver : Observer
+    internal class ConcreteObserver : Observer
     {
         private string _name;
         private string _observerState;
@@ -161,11 +160,5 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_14
         }
     }
 
-    #endregion
-
-    #region Event Handler
-
-
-
-    #endregion
+    #endregion Observer Standard
 }

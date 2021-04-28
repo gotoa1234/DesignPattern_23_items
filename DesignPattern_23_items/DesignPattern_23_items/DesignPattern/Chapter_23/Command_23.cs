@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_23
 {
-    class Command_23
+    /// <summary>
+    /// 【命令模式】Command 行為型模式
+    /// <para>
+    /// 將一個請求封裝為一個對象，從而使你可用不同的請求對客戶進行參數化;
+    /// 對請求排隊或記錄請求日誌，以及支持可撤銷的操作。
+    /// </para>
+    /// </summary>
+    internal class Command_23
     {
         public void ExecuteOpenShop()
         {
@@ -29,7 +33,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_23
         }
     }
 
-
     /// <summary>
     /// 烤肉
     /// </summary>
@@ -44,7 +47,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_23
         {
             Console.WriteLine("烤雞翅");
         }
-
     }
 
     public abstract class Command
@@ -65,7 +67,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_23
     /// <summary>
     /// 烤羊肉
     /// </summary>
-    class BakeMuttonCommand : Command
+    internal class BakeMuttonCommand : Command
     {
         public BakeMuttonCommand(Barbecuer receiver) : base(receiver)
         {
@@ -80,7 +82,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_23
     /// <summary>
     /// 烤雞翅
     /// </summary>
-    class BakeChickenWingCommand : Command
+    internal class BakeChickenWingCommand : Command
     {
         public BakeChickenWingCommand(Barbecuer receiver) : base(receiver)
         {
@@ -108,15 +110,12 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_23
             if (command.GetType().ToString() == "命令模式.BakeChickenWingCommand")
             {
                 Console.WriteLine("服務員反映 : 沒有雞翅請點別的");
-
             }
             else
             {
                 orders.Add(command);
                 Console.WriteLine($"增加訂單: {command.ToString()} 時間: {DateTime.Now.ToString()}");
-
             }
-
         }
 
         public void CancelOrder(Command command)
@@ -135,6 +134,5 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_23
                 item.ExcuteCommand();
             }
         }
-
     }
 }

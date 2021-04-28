@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_16
 {
-    class State_16
+    /// <summary>
+    /// 【狀態模式】State 行為型模式
+    /// <para>
+    /// 當一個對象的內在狀態改變時允許改變其行為，
+    /// 這個對象看起來像是改變了其類。
+    /// </para>
+    /// </summary>
+    internal class State_16
     {
         public void ExecuteWorkState()
         {
@@ -16,7 +19,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_16
                 project.Hour = i;
                 project.WriteProgram();
             }
-
         }
 
         public void ExecutePropertyStatePatten()
@@ -75,14 +77,13 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_16
                 }
             }
         }
-
     }
 
-    #endregion
+    #endregion 1. Origine Class
 
     #region 2. Property State Patten
 
-    class Context
+    internal class Context
     {
         private State _state;
 
@@ -103,12 +104,12 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_16
         }
     }
 
-    abstract class State
+    internal abstract class State
     {
         public abstract void Handle(Context context);
     }
 
-    class ConcreteStateA : State
+    internal class ConcreteStateA : State
     {
         public override void Handle(Context context)
         {
@@ -117,7 +118,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_16
         }
     }
 
-    class ConcreteStateB : State
+    internal class ConcreteStateB : State
     {
         public override void Handle(Context context)
         {
@@ -126,7 +127,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_16
         }
     }
 
-    class ConcreteStateC : State
+    internal class ConcreteStateC : State
     {
         public override void Handle(Context context)
         {
@@ -135,11 +136,11 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_16
         }
     }
 
-    #endregion
+    #endregion 2. Property State Patten
 
     #region 3. Finish Class
 
-    class ContextWork
+    internal class ContextWork
     {
         private State _state;
 
@@ -160,12 +161,12 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_16
         //}
     }
 
-    abstract class WorkState
+    internal abstract class WorkState
     {
         public abstract void Working(ContextWork context);
     }
 
-    class WorkingAM : WorkState
+    internal class WorkingAM : WorkState
     {
         public override void Working(ContextWork context)
         {
@@ -173,7 +174,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_16
         }
     }
 
-    class WorkingNoon : WorkState
+    internal class WorkingNoon : WorkState
     {
         public override void Working(ContextWork context)
         {
@@ -181,7 +182,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_16
         }
     }
 
-    class WorkingPM : WorkState
+    internal class WorkingPM : WorkState
     {
         public override void Working(ContextWork context)
         {
@@ -189,7 +190,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_16
         }
     }
 
-    class WorkingNight : WorkState
+    internal class WorkingNight : WorkState
     {
         public override void Working(ContextWork context)
         {
@@ -197,5 +198,5 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_16
         }
     }
 
-    #endregion
+    #endregion 3. Finish Class
 }

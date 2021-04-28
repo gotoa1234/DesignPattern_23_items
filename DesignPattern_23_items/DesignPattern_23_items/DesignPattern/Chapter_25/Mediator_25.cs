@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_25
 {
-    class Mediator_25
+    /// <summary>
+    /// 【中介者模式】Mediator 行為型模式
+    /// <para>
+    /// 用一個中介對象來封裝一系列的對象交互。
+    /// 中介者使各個對象不需要直接地相互引用，從而使其耦合松散，
+    /// 而且可以獨立地改變它們之間的交互。
+    /// </para>
+    /// </summary>
+    internal class Mediator_25
     {
-        /// <summary>
-        /// 中介者原型
-        /// </summary>
         public void ExcuteOrigine()
         {
             //中介者
@@ -25,8 +26,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_25
 
             c1.Send("吃過飯了嗎");
             c2.Send("沒有呢! 你要請客嗎?");
-
-
         }
 
         /// <summary>
@@ -44,18 +43,15 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_25
 
             c1.Declare("開打");
             c2.Declare("來啊");
-
         }
     }
 
-
     #region 中介者模式原型
-
 
     /// <summary>
     /// 中介者
     /// </summary>
-    abstract class Mediator
+    internal abstract class Mediator
     {
         /// <summary>
         /// 發送消息
@@ -68,7 +64,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_25
     /// <summary>
     /// 抽象同事類
     /// </summary>
-    abstract class Colleague
+    internal abstract class Colleague
     {
         /// <summary>
         /// 具有中介者協調
@@ -88,7 +84,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_25
     /// <summary>
     ///實體 同事2
     /// </summary>
-    class ConcreteColleague1 : Colleague
+    internal class ConcreteColleague1 : Colleague
     {
         /// <summary>
         /// 設定自己的中介者
@@ -108,9 +104,9 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_25
     }
 
     /// <summary>
-    /// 同事1 
+    /// 同事1
     /// </summary>
-    class ConcreteColleague2 : Colleague
+    internal class ConcreteColleague2 : Colleague
     {
         /// <summary>
         /// 設定自己的中介者
@@ -132,14 +128,14 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_25
     /// <summary>
     /// 中介者實作
     /// </summary>
-    class ConcreteMediator : Mediator
+    internal class ConcreteMediator : Mediator
     {
         #region 加入被協調的對象
 
         private ConcreteColleague1 _colleague1;
         private ConcreteColleague2 _colleague2;
 
-        #endregion
+        #endregion 加入被協調的對象
 
         public ConcreteColleague1 Colleague1
         {
@@ -168,14 +164,15 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_25
             }
         }
     }
-    #endregion
+
+    #endregion 中介者模式原型
 
     #region 聯合國中介模式
 
     /// <summary>
     /// 聯合國機構
     /// </summary>
-    abstract class UnitedNations
+    internal abstract class UnitedNations
     {
         /// <summary>
         /// 聲明
@@ -188,7 +185,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_25
     /// <summary>
     /// 國家
     /// </summary>
-    abstract class Country
+    internal abstract class Country
     {
         protected UnitedNations _mediator;
 
@@ -198,9 +195,11 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_25
         }
     }
 
-    class USA : Country
+    internal class USA : Country
     {
-        public USA(UnitedNations mediator) : base(mediator) { }
+        public USA(UnitedNations mediator) : base(mediator)
+        {
+        }
 
         /// <summary>
         ///  宣告
@@ -221,9 +220,11 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_25
         }
     }
 
-    class China : Country
+    internal class China : Country
     {
-        public China(UnitedNations mediator) : base(mediator) { }
+        public China(UnitedNations mediator) : base(mediator)
+        {
+        }
 
         /// <summary>
         /// 宣告
@@ -244,7 +245,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_25
         }
     }
 
-    class UnitedNationsSecurityCouncil : UnitedNations
+    internal class UnitedNationsSecurityCouncil : UnitedNations
     {
         private USA _colleague1;
         private China _colleague2;
@@ -272,6 +273,5 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_25
         }
     }
 
-    #endregion
-
+    #endregion 聯合國中介模式
 }

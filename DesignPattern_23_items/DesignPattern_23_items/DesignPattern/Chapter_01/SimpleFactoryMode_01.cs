@@ -2,20 +2,20 @@
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_01
 {
-    class SimpleFactoryMode_01
+    internal class SimpleFactoryMode_01
     {
         /// <summary>
         /// 簡單工廠模式 - 計算
         /// </summary>
         public void SampleFactoryModeExecute()
         {
-            //一般運算 Add 
+            //一般運算 Add
             var add = new Add();
             add.NumberA = 10d;
             add.NumberB = 15d;
             add.GetResult();
 
-            //一般運算 Sub 
+            //一般運算 Sub
             var sub = new Sub();
             sub.NumberA = 23d;
             sub.NumberB = 39d;
@@ -36,10 +36,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_01
             operationsB.NumberA = 993;
             operationsB.NumberB = 456;
             Console.WriteLine($"Class Type: {operationsB.GetType()}  運算結果: {operationsB.GetResult()}");
-
-
-
-
         }
 
         /// <summary>
@@ -54,7 +50,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_01
             {
                 get { return _numberA; }
                 set { _numberA = value; }
-
             }
 
             public double NumberB
@@ -64,7 +59,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_01
             }
 
             /// <summary>
-            /// 回傳計算結果 
+            /// 回傳計算結果
             /// </summary>
             /// <returns></returns>
             public virtual double GetResult()
@@ -125,7 +120,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_01
                 }
                 return new Operation();
             }
-
         }
     }
 }

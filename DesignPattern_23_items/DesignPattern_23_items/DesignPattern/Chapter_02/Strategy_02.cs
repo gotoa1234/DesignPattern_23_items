@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_02
 {
-    class Strategy_02
+    internal class Strategy_02
     {
         /// <summary>
-        /// 策略模式
+        /// 【策略模式】Strategy 行為型模式
+        /// <para>
+        /// 定義了算法家族，分別封裝起來，讓彼此之間可以互相替換
+        /// 此模式讓算法的變化，不會影響到使用算法的客戶
+        /// </para>
         /// </summary>
         public void ExecuteStrategyMode()
         {
@@ -17,14 +17,13 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_02
             Console.WriteLine($"Class Type => {strage1.GetType()} 金額 => {50} 策略運算 => {strage1.AcceptCashResult(50)}");
             Console.WriteLine($"Class Type => {strage1.GetType()} 金額 => {20} 策略運算 => {strage1.AcceptCashResult(20)}");
 
-            strage1 = new CashRebate("0.8");//打8折 
+            strage1 = new CashRebate("0.8");//打8折
             Console.WriteLine($"Class Type => {strage1.GetType()} 金額 => {50} 策略運算 => {strage1.AcceptCashResult(50)}");
             Console.WriteLine($"Class Type => {strage1.GetType()} 金額 => {20} 策略運算 => {strage1.AcceptCashResult(20)}");
 
             strage1 = new CashReturn("15", "5");//消費15 元 返金5元
             Console.WriteLine($"Class Type => {strage1.GetType()} 金額 => {50} 策略運算 => {strage1.AcceptCashResult(50)}");
             Console.WriteLine($"Class Type => {strage1.GetType()} 金額 => {20} 策略運算 => {strage1.AcceptCashResult(20)}");
-
         }
 
         /// <summary>
@@ -41,7 +40,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_02
             //進行策略B
             context = new Context(new ConcreteStrategyB());
             context.ContextInterface();
-
         }
     }
 
@@ -50,19 +48,18 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_02
     /// <summary>
     /// 抽象算法
     /// </summary>
-    abstract class Strategy
+    internal abstract class Strategy
     {
         /// <summary>
         /// 算法方法 Method
         /// </summary>
         public abstract void AlgorithmInterface();
-
     }
 
     /// <summary>
     /// 實體子類 - 策略A
     /// </summary>
-    class ConcreteStrategyA : Strategy
+    internal class ConcreteStrategyA : Strategy
     {
         public override void AlgorithmInterface()
         {
@@ -73,7 +70,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_02
     /// <summary>
     /// 實體子類 - 策略B
     /// </summary>
-    class ConcreteStrategyB : Strategy
+    internal class ConcreteStrategyB : Strategy
     {
         public override void AlgorithmInterface()
         {
@@ -81,9 +78,9 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_02
         }
     }
 
-    class Context
+    internal class Context
     {
-        Strategy _strategy;
+        private Strategy _strategy;
 
         public Context(Strategy strategy)
         {
@@ -96,14 +93,14 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_02
         }
     }
 
-    #endregion
+    #endregion 策略模式 原型
 
     #region 策略模式 - 消費策略範例
 
     /// <summary>
     /// 父類 - 抽象類別
     /// </summary>
-    abstract class CashSuper
+    internal abstract class CashSuper
     {
         public virtual double AcceptCashResult(double money)
         {
@@ -114,14 +111,14 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_02
     /// <summary>
     /// 一般策略
     /// </summary>
-    class CashNormal : CashSuper
+    internal class CashNormal : CashSuper
     {
     }
 
     /// <summary>
-    /// 打折策略 
+    /// 打折策略
     /// </summary>
-    class CashRebate : CashSuper
+    internal class CashRebate : CashSuper
     {
         private double moneyRebate = 1d;
 
@@ -146,9 +143,9 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_02
     }
 
     /// <summary>
-    /// 返利策略 
+    /// 返利策略
     /// </summary>
-    class CashReturn : CashSuper
+    internal class CashReturn : CashSuper
     {
         private readonly double _moneyCondition = 0.0d;
         private readonly double _moneyReturn = 0.0d;
@@ -181,6 +178,5 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_02
         }
     }
 
-    #endregion
-
+    #endregion 策略模式 - 消費策略範例
 }

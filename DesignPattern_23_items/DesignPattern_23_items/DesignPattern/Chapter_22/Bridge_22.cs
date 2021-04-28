@@ -2,7 +2,13 @@
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_22
 {
-    class Bridge_22
+    /// <summary>
+    /// 【橋接器模式】Bridge 結構型模式
+    /// <para>
+    /// 將抽象部分與它的實例部分分離，使他們都可以獨立地變化。
+    /// </para>
+    /// </summary>
+    internal class Bridge_22
     {
         public void Excute()
         {
@@ -22,16 +28,15 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_22
 
             ab.SetHandsetSoft(new HandsetAddressList());
             ab.Run();
-
         }
     }
 
-    abstract class HandsetSoft
+    internal abstract class HandsetSoft
     {
         public abstract void Run();
     }
 
-    class HandsetGame : HandsetSoft
+    internal class HandsetGame : HandsetSoft
     {
         public override void Run()
         {
@@ -39,7 +44,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_22
         }
     }
 
-    class HandsetAddressList : HandsetSoft
+    internal class HandsetAddressList : HandsetSoft
     {
         public override void Run()
         {
@@ -47,7 +52,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_22
         }
     }
 
-    abstract class HandsetBrand
+    internal abstract class HandsetBrand
     {
         protected HandsetSoft soft;
 
@@ -59,7 +64,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_22
         public abstract void Run();
     }
 
-    class HandsetBrandN : HandsetBrand
+    internal class HandsetBrandN : HandsetBrand
     {
         public override void Run()
         {
@@ -67,12 +72,11 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_22
         }
     }
 
-    class HandsetBrandM : HandsetBrand
+    internal class HandsetBrandM : HandsetBrand
     {
         public override void Run()
         {
             soft.Run();
         }
     }
-
 }

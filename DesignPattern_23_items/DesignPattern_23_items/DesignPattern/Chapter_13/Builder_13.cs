@@ -4,7 +4,14 @@ using System.Drawing;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_13
 {
-    class Builder_13
+    /// <summary>
+    /// 【建造者模式】Builder 創建型模式
+    /// <para>
+    /// 將一個複雜對象的構建與它的表示分離，
+    /// 使得同樣的構建過程可以創建不同的表示。
+    /// </para>
+    /// </summary>
+    internal class Builder_13
     {
         public Builder_13()
         {
@@ -29,7 +36,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_13
 
     #region Basic Builder
 
-    abstract class PersonBuilder
+    internal abstract class PersonBuilder
     {
         protected Graphics g;
         protected Pen p;
@@ -38,18 +45,19 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_13
         {
             this.g = g;
             this.p = p;
-
         }
 
         public abstract void BuildeHead();
+
         public abstract void BuildeBody();
+
         public abstract void BuildeFoot();
     }
 
     /// <summary>
     /// Thin Man
     /// </summary>
-    class PersonThinBuilder : PersonBuilder
+    internal class PersonThinBuilder : PersonBuilder
     {
         public PersonThinBuilder(Graphics g, Pen p) : base(g, p)
         {
@@ -71,7 +79,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_13
         }
     }
 
-    class Director
+    internal class Director
     {
         private PersonBuilder _pb;
 
@@ -88,13 +96,13 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_13
         }
     }
 
-    #endregion
+    #endregion Basic Builder
 
     #region Extension Builder
 
-    class Product
+    internal class Product
     {
-        IList<string> parts = new List<string>();
+        private IList<string> parts = new List<string>();
 
         public void Add(string part)
         {
@@ -112,7 +120,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_13
         }
     }
 
-    abstract class Builder
+    internal abstract class Builder
     {
         public abstract void BuilderPartA();
 
@@ -121,7 +129,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_13
         public abstract Product GetResult();
     }
 
-    class ConcreteBuilder1 : Builder
+    internal class ConcreteBuilder1 : Builder
     {
         private Product _product = new Product();
 
@@ -141,7 +149,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_13
         }
     }
 
-    class ConcreteBuilder2 : Builder
+    internal class ConcreteBuilder2 : Builder
     {
         private Product _product = new Product();
 
@@ -161,7 +169,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_13
         }
     }
 
-    class DirectorFactory
+    internal class DirectorFactory
     {
         public void Construct(Builder builder)
         {
@@ -170,8 +178,5 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_13
         }
     }
 
-
-
-
-    #endregion
+    #endregion Extension Builder
 }

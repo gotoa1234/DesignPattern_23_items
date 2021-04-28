@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_09
 {
-    class Prototype_09
+    /// <summary>
+    /// 【原型模式】Prototype 創建型模式
+    /// <para>
+    /// 用原型實例指定創建對象的種類，並且通過複製
+    /// 這些原型來創建新的對象
+    /// </para>
+    /// </summary>
+    internal class Prototype_09
     {
         public void ExecuteSwallowClone()
         {
@@ -14,30 +17,26 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_09
             ConcretePrototype1 p1 = new ConcretePrototype1("I");
             ConcretePrototype1 p2 = (ConcretePrototype1)p1.Clone();
             Console.WriteLine($"Cloned:{p2.ID}");
-
         }
 
         public void ExecuteDeepClone()
         {
-
             //Deep Clone
             WorkExperience s = new WorkExperience();
             s.Company = "IT";
             s.WorkDate = "2018-01-01";
 
-
             Resume x1 = new Resume(s);
             x1.SetPersonalInfo("女", "18");
             x1.SetWorkExperience("2018-0202", "HTC");
             var x2 = x1.Clone();
-
         }
     }
 
     #region Shallow Clone 淺層Clone
-    abstract class Prototype
-    {
 
+    internal abstract class Prototype
+    {
         private string _id;
 
         public Prototype(string id)
@@ -54,11 +53,10 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_09
         public abstract Prototype Clone();
     }
 
-    class ConcretePrototype1 : Prototype
+    internal class ConcretePrototype1 : Prototype
     {
         public ConcretePrototype1(string id) : base(id)
         {
-
         }
 
         public override Prototype Clone()
@@ -67,11 +65,11 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_09
         }
     }
 
-    #endregion
+    #endregion Shallow Clone 淺層Clone
 
     #region Deep Clone 深層 Clone
 
-    class WorkExperience : ICloneable
+    internal class WorkExperience : ICloneable
     {
         private string _workDate;
         private string _company;
@@ -80,7 +78,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_09
         {
             get => _workDate;
             set => _workDate = value;
-
         }
 
         public string Company
@@ -95,7 +92,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_09
         }
     }
 
-    class Resume : ICloneable
+    internal class Resume : ICloneable
     {
         private string _name;
         private string _sex;
@@ -121,7 +118,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_09
 
         public void Display()
         {
-
         }
 
         public object Clone()
@@ -134,5 +130,5 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_09
         }
     }
 
-    #endregion
+    #endregion Deep Clone 深層 Clone
 }

@@ -1,12 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_18
 {
-    class Memento_18
+    /// <summary>
+    /// 【備忘錄模式】Memonto 行為型模式
+    /// <para>
+    /// 在不破壞封裝性的前提下，捕獲一個對象的內部狀態，
+    /// 並在該對象之外保存這個狀態。
+    /// 這樣以後就可以將該對象恢復到原先保存的狀態
+    /// </para>
+    /// </summary>
+    internal class Memento_18
     {
         public void HistoryExecte()
         {
@@ -30,8 +34,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_18
             lixiaoyao.Defense = back.Defense;
 
             lixiaoyao.StateDisplay();
-
-
         }
 
         public void ExecuteState()
@@ -48,9 +50,6 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_18
 
             o.SetMemento(c.Memento);
             o.Show();
-
-
-
         }
 
         public void UltmateExcute()
@@ -74,22 +73,22 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_18
         }
     }
 
-    class GameRole
+    internal class GameRole
     {
-
         /// <summary>
         /// 生命力
         /// </summary>
         private int _vit;
+
         /// <summary>
         /// 攻擊力
         /// </summary>
         private int _atk;
+
         /// <summary>
         /// 防禦力
         /// </summary>
         private int _def;
-
 
         public int Vitality
         {
@@ -132,9 +131,10 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_18
         }
     }
 
-    class Originator
+    internal class Originator
     {
         private string _state;
+
         public string State
         {
             get => _state;
@@ -157,9 +157,10 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_18
         }
     }
 
-    class Memento
+    internal class Memento
     {
         private string _state;
+
         public Memento(string state)
         {
             _state = state;
@@ -175,7 +176,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_18
     /// <summary>
     /// Manager
     /// </summary>
-    class Caretaker
+    internal class Caretaker
     {
         private Memento _memento;
 
@@ -186,10 +187,9 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_18
         }
     }
 
-
     #region Ultmate Version
 
-    class GamePlayer
+    internal class GamePlayer
     {
         private int _attack;
 
@@ -202,11 +202,13 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_18
             get => _attack;
             set => _attack = value;
         }
+
         public int Life
         {
             get => _life;
             set => _life = value;
         }
+
         public int Defense
         {
             get => _defense;
@@ -248,7 +250,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_18
         }
     }
 
-    class RoleStateMemento
+    internal class RoleStateMemento
     {
         private int _life;
         private int _atk;
@@ -266,11 +268,13 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_18
             get => _life;
             set => _life = value;
         }
+
         public int Attack
         {
             get => _atk;
             set => _atk = value;
         }
+
         public int Defense
         {
             get => _def;
@@ -278,7 +282,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_18
         }
     }
 
-    class RoleStateCaretaker
+    internal class RoleStateCaretaker
     {
         private RoleStateMemento _memento;
 
@@ -287,8 +291,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_18
             get => _memento;
             set => _memento = value;
         }
-
-
     }
-    #endregion
+
+    #endregion Ultmate Version
 }

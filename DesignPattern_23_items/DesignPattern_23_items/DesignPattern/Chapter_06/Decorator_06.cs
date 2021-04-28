@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_06
 {
-    class Decorator_06
+    /// <summary>
+    /// 【修飾模式】Decorator 結構型模式
+    /// <para>
+    /// 動態的給一個對象添加一些額外的職責，
+    /// 增加功能來說，裝飾模式生成子類更靈活
+    /// </para>
+    /// </summary>
+    internal class Decorator_06
     {
         public void DecoratorExecute()
         {
@@ -30,14 +33,10 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_06
             kk.Show();
             Console.WriteLine("--- 3 ---");
             dtx2.Show();
-
-
         }
     }
 
-
-
-    class Person
+    internal class Person
     {
         private string _name;
 
@@ -56,9 +55,8 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_06
         }
     }
 
-    class Finery : Person
+    internal class Finery : Person
     {
-
         protected Person _compoenet;
 
         public void Decorate(Person component)
@@ -73,7 +71,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_06
         }
     }
 
-    class TShirts : Finery
+    internal class TShirts : Finery
     {
         public override void Show()
         {
@@ -82,7 +80,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_06
         }
     }
 
-    class BTrouser : Finery
+    internal class BTrouser : Finery
     {
         public override void Show()
         {

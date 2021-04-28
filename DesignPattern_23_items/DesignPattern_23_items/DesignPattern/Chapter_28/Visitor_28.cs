@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPattern_23_items.DesignPattern.Chapter_28
 {
-    class Visitor_28
+    /// <summary>
+    /// 【訪問者模式】Visitor 行為型模式
+    /// <para>
+    /// 表示一個作用於某對象結構中的各元素的操作者。
+    /// 它使你可以在不改變元素的類的前提下定義作用於這些元素的新操作。
+    /// </para>
+    /// </summary>
+    internal class Visitor_28
     {
         /// <summary>
         /// 拜訪者
@@ -48,21 +52,23 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_28
         /// <summary>
         /// 抽象人類
         /// </summary>
-        abstract class Person
+        private abstract class Person
         {
             protected string _action;
+
             public string Action
             {
                 get => _action;
                 set => _action = value;
             }
+
             /// <summary>
             /// 得到結論或反應
             /// </summary>
             public abstract void GetConclusion();
         }
 
-        class Man : Person
+        private class Man : Person
         {
             public override void GetConclusion()
             {
@@ -81,7 +87,7 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_28
             }
         }
 
-        class Woman : Person
+        private class Woman : Person
         {
             public override void GetConclusion()
             {
