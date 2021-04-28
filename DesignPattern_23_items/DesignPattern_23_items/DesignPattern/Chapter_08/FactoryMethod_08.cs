@@ -9,20 +9,26 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_08
     /// 工廠方法使一個類的實例化延遲到子類中實例
     /// </para>
     /// </summary>
-    internal class FactoryMethod_08
+    class FactoryMethod_08
     {
         public FactoryMethod_08()
         {
-            IFactory fac = new UndergraduateFactory();
-            LeiFeng stu = fac.CreateLeiFeng();
-
+            IFactory factory = new UndergraduateFactory();
+            LeiFeng stu = factory.CreateLeiFeng();
             stu.BuyRice();
             stu.Wash();
             stu.Sweep();
+
+            factory = new VolumnteerFactory();
+            stu = factory.CreateLeiFeng();
+            stu.BuyRice();
+            stu.Wash();
+            stu.Sweep();
+
         }
     }
 
-    internal class LeiFeng
+    class LeiFeng
     {
         public void Sweep()
         {
@@ -40,19 +46,32 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_08
         }
     }
 
-    internal class Undergraduate : LeiFeng
+    interface IFactory
+    {
+        LeiFeng CreateLeiFeng();
+    }
+
+    #region 第一個物件
+
+    //主體
+    class Undergrated : LeiFeng
     {
     }
 
-    internal class UndergraduateFactory : IFactory
+    //產生主體的工廠
+    class UndergraduateFactory : IFactory
     {
         public LeiFeng CreateLeiFeng()
         {
-            return new Undergraduate();
+            return new Undergrated();
         }
     }
+    #endregion
 
-    internal class Volunteer : LeiFeng
+    #region 第二個物件
+
+    //主體
+    class Volunteer : LeiFeng
     {
         public LeiFeng CreateLeiFeng()
         {
@@ -60,20 +79,18 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_08
         }
     }
 
-    internal class VolunteerFactory : IFactory
+    //產生主體的工廠
+    class VolumnteerFactory : IFactory
     {
         public LeiFeng CreateLeiFeng()
         {
-            throw new NotImplementedException();
+            return new Volunteer();
         }
     }
+    #endregion
 
-    internal interface IFactory
-    {
-        LeiFeng CreateLeiFeng();
-    }
-
-    internal class SimpleFactory
+    //工廠方法模式就不會用簡單工廠 -- 以下是對照用
+    class SimpleFactory
     {
         public static LeiFeng CreateLeiFang(string type)
         {
@@ -81,15 +98,17 @@ namespace DesignPattern_23_items.DesignPattern.Chapter_08
             switch (type)
             {
                 case "a":
-                    result = new Undergraduate();
+                    result = new Undergrated();
                     break;
-
                 case "b":
                     result = new Volunteer();
                     break;
             }
 
             return result;
+
         }
+
     }
 }
+
